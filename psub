@@ -1,7 +1,9 @@
-#script1
 echo enter program : ; read x
 mkdir "$x" ; cd "$x"
 mkdir "sub" ; cd sub
 wget https://chaos-data.projectdiscovery.io/"$x".zip ; unzip "$x.zip" && rm "$x.zip"
 cat *.txt | uniq > "$x".txt
+grep -P '\d' "$x".txt > scrap.txt
+grep -vP '\d' "$x".txt > temp
+mv temp "$x".txt
 wc -l *.txt
